@@ -56,6 +56,13 @@ img = cv2.imread(filename)
 imgray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 imgray_i = cv2.bitwise_not(imgray)
 
+out = "foo.png"
+if os.path.exists(out):
+    os.remove(out)
+cv2.imwrite(out, imgray_i)
+sys.exit()
+
+
 _, mask = cv2.threshold(imgray, 127, 255, cv2.THRESH_BINARY)
 imask = cv2.bitwise_not(mask)
 
